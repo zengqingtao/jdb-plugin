@@ -1,0 +1,194 @@
+.jdb-cps-coupon-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+.jdb-cps-coupon-box {
+    width: 1150px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 15px 15px;
+    position: relative;
+}
+
+
+/* 关闭按钮 */
+
+.jdb-cps-coupon-close {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.jdb-cps-coupon-close .el-icon-close {
+    font-size: 18px;
+    color: #fff;
+}
+
+.jdb-cps-coupon-skuOrSpu-button-box button {
+    width: 80px;
+    height: 30px;
+    color: #4E74ff;
+    outline: none;
+    border: 1px solid #4E74ff;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 0 10px 10px 0;
+    transition: .2s;
+}
+
+.jdb-cps-coupon-skuOrSpu-button-box button:hover {
+    color: #fff;
+    background-color: #4E74ff;
+}
+
+.jdb-cps-coupon-skuOrSpu-button-box button.is-active {
+    color: #fff;
+    background-color: #4E74ff;
+}
+
+.jdb-cps-coupon-skuOrSpu-button-box button.is-active:hover {
+    border-color: #3159e4;
+    background-color: #3159e4;
+}
+
+
+/* 表格 */
+
+.jdb-cps-coupon-table {
+    width: 100%;
+    color: #333;
+    font-size: 14px;
+}
+
+.jdb-cps-coupon-thead {
+    width: 100%;
+    display: inline-block;
+}
+
+.jdb-cps-coupon-thead tr {
+    height: 50px;
+    background-color: #f4f4f4;
+}
+
+.jdb-cps-coupon-tbody {
+    width: 100%;
+    max-height: 507px;
+    display: inline-block;
+    overflow-y: auto;
+    border-bottom: 1px solid #eee
+}
+
+
+/* tbody中的loading */
+
+.jdb-cps-coupon-loading-td {
+    min-width: 1110px !important;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.jdb-cps-coupon-loading-td .el-icon-loading {
+    font-size: 24px
+}
+
+
+/* 因为tbody中达到一定的高度需要显示滚动条，上面把tbody的display设置为inline-block,不再是table了，所以表头和tbody内容需要固定一样宽度来对齐 */
+
+.jdb-cps-coupon-thead tr th,
+.jdb-cps-coupon-tbody tr td {
+    width: 98px;
+    padding: 8px 5px;
+    text-align: center;
+}
+
+.jdb-cps-coupon-thead tr th:first-child,
+.jdb-cps-coupon-tbody tr td:first-child {
+    width: 130px;
+}
+
+.jdb-cps-coupon-thead tr th:nth-child(2),
+.jdb-cps-coupon-tbody tr td:nth-child(2) {
+    width: 130px;
+    text-align: start;
+}
+
+.jdb-cps-coupon-thead tr th:nth-child(3),
+.jdb-cps-coupon-tbody tr td:nth-child(3),
+.jdb-cps-coupon-thead tr th:nth-child(4),
+.jdb-cps-coupon-tbody tr td:nth-child(4) {
+    width: 78px;
+}
+
+.jdb-cps-coupon-thead tr th:nth-child(8),
+.jdb-cps-coupon-thead tr th:last-child,
+.jdb-cps-coupon-tbody tr td:nth-child(8),
+.jdb-cps-coupon-tbody tr td:last-child {
+    width: 160px;
+}
+
+.jdb-cps-coupon-tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #eee;
+}
+
+.jdb-cps-coupon-tbody tr td:first-child {
+    border-left: 1px solid #eee;
+}
+
+.jdb-cps-coupon-tbody tr td:last-child {
+    border-right: 1px solid #eee;
+}
+
+.jdb-cps-coupon-link-td div {
+    word-wrap: break-word;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.jdb-cps-coupon-link-td div:hover {
+    color: #4E74ff
+}
+
+
+/* 滚动条宽度 */
+
+.jdb-cps-coupon-tbody::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+/* 滚动条背景色和圆角 */
+
+.jdb-cps-coupon-tbody::-webkit-scrollbar-thumb {
+    background-color: #90A7FA;
+    border-radius: 2px;
+}
+
+
+/* 滚动轨道背景色 */
+
+.jdb-cps-coupon-tbody::-webkit-scrollbar-track {
+    background-color: #eee;
+}

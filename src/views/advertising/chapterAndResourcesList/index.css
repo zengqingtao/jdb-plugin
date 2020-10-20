@@ -1,0 +1,403 @@
+.jdb-chapterResources-modal,
+.jdb-resourcesDetails-modal,
+.jdb-preImage-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+.jdb-chapterResources-box {
+    width: 800px;
+    height: 310px;
+    color: #333;
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+
+.jdb-chapterResources-close {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.jdb-chapterResources-chapter,
+.jdb-chapterResources-resources {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.jdb-chapterResources-chapter {
+    padding-bottom: 14px;
+}
+
+.jdb-chapterResources-chapter-title,
+.jdb-chapterResources-resources-title {
+    height: 24px;
+    line-height: 24px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.jdb-chapterResources-chapter-title {
+    width: 200px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+
+/* 章节 */
+
+.jdb-chapterResources-chapter-ul {
+    width: 100%;
+    flex: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: 30px 0 0;
+    padding: 0 15px 0 30px;
+}
+
+.jdb-chapterResources-chapter-ul li {
+    box-sizing: border-box;
+    display: flex;
+    height: 30px;
+    line-height: 20px;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.jdb-chapterResources-chapter-ul li a {
+    width: 75px !important;
+    color: #4d75ff;
+    font-size: 14px;
+}
+
+.jdb-chapterResources-chapter-ul li a:hover {
+    text-decoration: none;
+    color: #3159e4;
+}
+
+.jdb-chapterResources-chapter-name {
+    flex: 1;
+    padding-right: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.jdb-chapterResources-chapter-button-group button {
+    width: 110px;
+    height: 30px;
+    color: #4d75ff;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #4d75ff;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.jdb-chapterResources-chapter-button-group button:hover {
+    color: #fff;
+    background-color: #4d75ff;
+}
+
+.jdb-chapterResources-chapter-button-group button:last-child {
+    width: 120px;
+    margin-left: 6px;
+}
+
+
+/* 资源 */
+
+.jdb-chapterResources-resources-ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 0 19px 0 15px;
+    margin: 22px 0 30px 0;
+}
+
+.jdb-chapterResources-resources-empty-li {
+    width: 100% !important;
+    height: 100% !important;
+    line-height: 20px;
+    margin: 0 !important;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.jdb-chapterResources-resources-empty-li img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 8px
+}
+
+.jdb-chapterResources-resources-empty-li .empty {
+    padding-top: 30px;
+}
+
+.jdb-chapterResources-resources-ul li:not(.jdb-chapterResources-resources-empty-li) {
+    width: 100%;
+    height: 57px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jdb-chapterResources-resources-ul li+li {
+    margin-top: 10px;
+}
+
+.jdb-chapterResources-resources-left {
+    display: flex;
+    align-items: center;
+}
+
+.jdb-chapterResources-resources-sourceName {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.jdb-chapterResources-resources-sourceName {
+    width: 110px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.jdb-chapterResources-resources-description {
+    width: 205px;
+    color: #999;
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.jdb-chapterResources-resources-left img {
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+}
+
+.jdb-chapterResources-resources-right button {
+    width: 78px;
+    height: 29px;
+    font-size: 14px;
+    outline: none;
+    color: #fff;
+    border: 1px solid #4d75ff;
+    background-color: #4d75ff;
+    border-radius: 4px;
+}
+
+.jdb-chapterResources-resources-right button:hover {
+    cursor: pointer;
+    border-color: #3159e4;
+    background-color: #3159e4;
+}
+
+
+/* 滚动条宽度 */
+
+.jdb-chapterResources-chapter-ul::-webkit-scrollbar,
+.jdb-chapterResources-resources-ul::-webkit-scrollbar,
+.jdb-resourcesDetails-content-box::-webkit-scrollbar {
+    width: 3px;
+}
+
+
+/* 滚动条背景色和圆角 */
+
+.jdb-chapterResources-chapter-ul::-webkit-scrollbar-thumb,
+.jdb-chapterResources-resources-ul::-webkit-scrollbar-thumb,
+.jdb-resourcesDetails-content-box::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 2px;
+}
+
+
+/* 滚动轨道背景色 */
+
+.jdb-chapterResources-chapter-ul::-webkit-scrollbar-track,
+.jdb-chapterResources-resources-ul::-webkit-scrollbar-track,
+.jdb-resourcesDetails-content-box::-webkit-scrollbar-track {
+    background-color: #F8F8F8;
+}
+
+
+/* 资源详情弹窗 */
+
+.jdb-resourcesDetails-box {
+    min-width: 489px;
+    max-width: 589px;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: #fff;
+    position: relative;
+    padding: 30px 15px 25px 20px;
+}
+
+.jdb-resourcesDetails-content-box {
+    height: 520px;
+    overflow-y: auto;
+}
+
+.jdb-resourcesDetails-close {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    cursor: pointer;
+}
+
+.jdb-resourcesDetails-title {
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 26px;
+}
+
+.jdb-resourcesDetails-item {
+    display: flex;
+}
+
+.jdb-resourcesDetails-item .tips {
+    color: #999;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.jdb-resourcesDetails-description {
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.jdb-resourcesDetails-QR-code,
+.jdb-examples-imgList img {
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+}
+
+.jdb-examples-imgList img {
+    margin-right: 6px;
+}
+
+.jdb-resourcesDetails-item+.jdb-resourcesDetails-item {
+    margin-top: 18px;
+}
+
+.jdb-resourcesDetails-box .label {
+    min-width: 70px;
+    text-align: end;
+}
+
+
+/* 预览图片 */
+
+.jdb-preImage-box {
+    background-color: #fff;
+    position: relative;
+}
+
+.jdb-preImage-box img {
+    display: block;
+}
+
+.jdb-preImage-close {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 16px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    right: -40px;
+    cursor: pointer;
+}
+
+.jdb-preImage-show-arrow {
+    position: relative;
+}
+
+.jdb-preImage-show-arrow:hover .jdb-preImage-arrow-left,
+.jdb-preImage-show-arrow:hover .jdb-preImage-arrow-right {
+    display: flex;
+}
+
+.jdb-preImage-arrow-left,
+.jdb-preImage-arrow-right {
+    width: 30px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: calc(50% - 30px);
+    cursor: pointer;
+}
+
+.jdb-preImage-arrow-left {
+    left: 0;
+}
+
+.jdb-preImage-arrow-right {
+    right: 0;
+}

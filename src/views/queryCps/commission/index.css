@@ -1,0 +1,41 @@
+/* 优惠券 */
+
+.jdb-cps-commission-box {
+    position: relative;
+    z-index: 10;
+    background-color: #fff;
+    box-shadow: 1px 4px 16px 0px rgba(136, 136, 136, 0.22);
+}
+
+.jdb-cps-commission-table {
+    width: 100%;
+    margin-top: 15px;
+    color: #333;
+    font-size: 12px;
+}
+
+.jdb-cps-commission-thead tr td {
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.jdb-cps-commission-tbody tr td {
+    height: 42px;
+    text-align: center;
+}
+
+.jdb-cps-commission-loading-td .el-icon-loading {
+    font-size: 18px
+}
+
+.jdb-cps-commission-box::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 128px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}

@@ -1,0 +1,39 @@
+.jdb-top-timedAdvertising-box {
+    position: relative;
+}
+
+.jdb-top-timedAdvertising-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    line-height: 20px !important;
+    text-align: center;
+    color: #fff !important;
+    background-color: #2d2d2d;
+    opacity: .3;
+    border-radius: 0 !important;
+}
+
+.jdb-top-timedAdvertising-img {
+    width: 100%;
+}
+
+.jdb-top-timedAdvertising-countDown {
+    width: 44px;
+    height: 44px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

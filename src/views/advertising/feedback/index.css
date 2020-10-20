@@ -1,0 +1,153 @@
+.jdb-evaluation-modal,
+.jdb-feedback-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+.jdb-evaluation-box,
+.jdb-feedback-box {
+    width: 430px;
+    height: 230px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 30px 0 42px;
+    position: relative;
+}
+
+.jdb-evaluation-close,
+.jdb-feedback-close {
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.jdb-evaluation-title {
+    display: flex;
+}
+
+.jdb-evaluation-title>span {
+    max-width: 230px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.jdb-evaluation-title,
+.jdb-feedback-title {
+    height: 27px;
+    line-height: 27px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.jdb-evaluation-score-box {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.jdb-evaluation-sumbit-button,
+.jdb-feedback-submit-button {
+    width: 90px;
+    height: 30px;
+    color: #fff;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #4d75ff;
+    background-color: #4d75ff;
+    cursor: pointer;
+}
+
+.jdb-evaluation-sumbit-button:hover,
+.jdb-feedback-submit-button:hover {
+    background-color: #3159e4;
+}
+
+.jdb-evaluation-star {
+    width: 148px;
+    height: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jdb-evaluation-star .el-icon-star-on {
+    height: 26px;
+    font-size: 26px;
+    color: #FCC531;
+    cursor: pointer;
+}
+
+.jdb-evaluation-star .el-icon-star-off {
+    font-size: 22px;
+    color: #999;
+    cursor: pointer;
+}
+
+
+/* 反馈 */
+
+.jdb-feedback-box {
+    padding-bottom: 20px;
+}
+
+.jdb-feedback-textarea {
+    width: 380px;
+    height: 100px;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 4px;
+    margin: 14px 0 18px;
+    padding: 5px;
+    border: 0;
+    background-color: #f8f8f8;
+    overflow-y: auto;
+}
+
+
+/* 滚动条宽度 */
+
+.jdb-feedback-textarea::-webkit-scrollbar,
+.jdb-feedback-textarea::-webkit-scrollbar {
+    width: 3px;
+}
+
+
+/* 滚动条背景色和圆角 */
+
+.jdb-feedback-textarea::-webkit-scrollbar-thumb,
+.jdb-feedback-textarea::-webkit-scrollbar-thumb {
+    background-color: #4d75ff;
+    border-radius: 2px;
+}
+
+
+/* 滚动轨道背景色 */
+
+.jdb-feedback-textarea::-webkit-scrollbar-track,
+.jdb-feedback-textarea::-webkit-scrollbar-track {
+    background-color: #eee;
+}

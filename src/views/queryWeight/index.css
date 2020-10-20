@@ -1,0 +1,225 @@
+.jdb-weight-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+}
+
+.jdb-weight-box {
+    width: 1108px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.jdb-keyword-box {
+    width: 100%;
+    height: 89px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.jdb-weight-sku {
+    padding-right: 40px;
+}
+
+.jdb-weight-close {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.jdb-weight-close .el-icon-close {
+    color: #fff;
+    font-size: 14px
+}
+
+.jdb-keyword-box input {
+    width: 238px;
+    height: 36px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #D3D3D3;
+    border-radius: 4px;
+    padding: 8px
+}
+
+.jdb-keyword-box input::-webkit-input-placeholder {
+    color: #D3D3D3;
+    font-size: 14px;
+}
+
+.jdb-weight-search-btn {
+    width: 86px;
+    height: 36px;
+    outline: none;
+    border: 0;
+    border-radius: 4px;
+    background-color: #4D75FF;
+    margin-left: 10px;
+    color: #fff;
+}
+
+.jdb-weight-search-btn .el-icon-loading {
+    display: none;
+}
+
+.jdb-weight-search-btn-loading .el-icon-loading {
+    display: inline-block;
+}
+
+.jdb-weight-search-btn:hover {
+    background-color: #3159e4
+}
+
+
+/* 表格 */
+
+.jdb-weight-data {
+    padding: 0 15px 0 19px;
+}
+
+.jdb-weight-table {
+    width: 1074px;
+    border: 1px solid #EEE;
+    border-radius: 10px;
+}
+
+.jdb-weight-thead tr th {
+    height: 38px;
+    box-sizing: border-box;
+    text-align: start;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.jdb-weight-thead tr th:first-child,
+.jdb-weight-tbody tr td:first-child {
+    text-align: center;
+}
+
+.jdb-weight-thead tr th:not(:last-child) {
+    border-right: 1px solid #eee;
+}
+
+.jdb-weight-tbody tr td {
+    border-top: 1px solid #eee;
+}
+
+.jdb-weight-tbody tr td:not(:last-child) {
+    border-right: 1px solid #eee
+}
+
+.jdb-goods-link-box {
+    display: flex;
+    align-items: center;
+}
+
+.jdb-goods-link-box .right {
+    flex: 1;
+    height: 59px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.goodsImg {
+    width: 55px;
+    height: 59px;
+    margin-right: 10px;
+}
+
+.jdb-goods-link-box .right a {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.jdb-goods-link-box .right a:hover {
+    color: #4D75FF
+}
+
+.jdb-weight-recommend-btn-box {
+    position: relative;
+}
+
+.jdb-weight-recommend-btn-box button {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    outline: none;
+    color: #4D75FF;
+    border: 1px solid #4D75FF;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.jdb-weight-recommend-btn-box button:hover {
+    color: #fff;
+    background-color: #4D75FF;
+}
+
+.jdb-weight-recommend-btn-box button:nth-child(2) {
+    margin-top: 6px;
+}
+
+.jdb-weight-recommend-btn-box button .tooltip {
+    visibility: hidden;
+    background-color: #fff;
+    color: #666;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    box-shadow: 0px 2px 6px 0px rgba(136, 136, 136, 0.28)
+}
+
+.jdb-weight-recommend-btn-box button:first-child .tooltip {
+    width: 430px;
+    top: -38px;
+}
+
+.jdb-weight-recommend-btn-box button:nth-child(2) .tooltip {
+    width: 400px;
+    top: -3px
+}
+
+.jdb-weight-recommend-btn-box button .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 52px;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+.jdb-weight-recommend-btn-box button:hover .tooltip {
+    visibility: visible;
+}

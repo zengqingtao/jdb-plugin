@@ -1,0 +1,237 @@
+.jdb-salesVolume-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.39);
+    flex-direction: column;
+}
+
+.jdb-salesVolume-box {
+    width: 1108px;
+    box-sizing: border-box;
+    padding: 27px 15px 28px 19px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 24px 0px rgba(168, 168, 236, 0.22);
+    position: relative;
+}
+
+.jdb-salesVolume-close {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    cursor: pointer;
+}
+
+.jdb-salesVolume-close .el-icon-close {
+    font-size: 16px;
+    color: #fff
+}
+
+.jdb-salesVolume-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+}
+
+.jdb-salesVolume-options-sku {
+    margin-right: 40px;
+}
+
+.jdb-salesVolume-options button {
+    width: 80px;
+    height: 30px;
+    outline: none;
+    border-radius: 4px;
+}
+
+.jdb-salesVolume-dimension-button {
+    color: #4D75ff;
+    border: 1px solid #4D75ff;
+    background-color: #fff;
+    margin-right: 5px;
+    transition: .2s
+}
+
+.jdb-salesVolume-dimension-button:hover {
+    color: #fff;
+    background-color: #4D75ff;
+}
+
+.jdb-salesVolume-dimension-button.is-active {
+    color: #fff;
+    border-color: #4D75ff;
+    background-color: #4D75ff;
+}
+
+.jdb-salesVolume-dimension-button.is-active:hover {
+    border-color: #3159e4;
+    background-color: #3159e4
+}
+
+.jdb-salesVolume-search-button {
+    color: #fff;
+    border: 1px solid #4D75ff;
+    background-color: #4D75ff;
+    margin-left: 30px;
+}
+
+.jdb-salesVolume-search-button:hover {
+    border-color: #3159e4;
+    background-color: #3159e4;
+}
+
+.jdb-salesVolume-search-button .el-icon-loading {
+    display: none;
+}
+
+.jdb-salesVolume-search-button.loading {
+    pointer-events: none;
+}
+
+.jdb-salesVolume-search-button.loading .el-icon-loading {
+    display: inline-block;
+}
+
+.jdb-salesVolume-table {
+    border: 1px solid #EEE;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.jdb-salesVolume-thead tr th {
+    width: 117px;
+    height: 38px;
+    border-right: 1px solid #eee;
+    text-align: start;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.jdb-salesVolume-thead tr th:first-child {
+    width: 47px;
+    text-align: center;
+}
+
+.jdb-salesVolume-thead tr th:nth-child(2) {
+    width: 197px;
+}
+
+.jdb-salesVolume-thead tr th:last-child {
+    width: 85px;
+    border-right: 0;
+}
+
+.jdb-salesVolume-tbody tr td:first-child {
+    text-align: center;
+}
+
+.jdb-salesVolume-tbody tr td {
+    border-top: 1px solid #eee;
+    color: #333;
+    font-size: 12px;
+}
+
+.jdb-salesVolume-tbody tr td:not(:last-child) {
+    border-right: 1px solid #eee
+}
+
+.jdb-salesVolume-relation-sku {
+    width: 65px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-size: 14px;
+    background: rgba(229, 241, 255, 1);
+    border-radius: 2px;
+}
+
+.jdb-salesVolume-goodsLink-box {
+    display: flex;
+    align-items: center;
+}
+
+.jdb-salesVolume-goodsLink-box .goodsImg {
+    width: 55px;
+    height: 59px;
+    margin-right: 6px;
+}
+
+.jdb-salesVolume-goodsLink-box a {
+    flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.jdb-salesVolume-goodsLink-box a:hover {
+    color: #4D75ff
+}
+
+.jdb-salesVolume-improveRank-btn-box {
+    position: relative;
+}
+
+.jdb-salesVolume-improveRank-btn-box button {
+    width: 80px;
+    height: 30px;
+    box-sizing: border-box;
+    outline: 0;
+    color: #4D75ff;
+    border: 1px solid #4D75ff;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.jdb-salesVolume-improveRank-btn-box button:hover {
+    color: #fff;
+    background-color: #4D75ff
+}
+
+.jdb-salesVolume-improveRank-btn-box button .tooltip {
+    width: 240px;
+    visibility: hidden;
+    background-color: #fff;
+    color: #666;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    top: -14px;
+    right: 0;
+    z-index: 1;
+    box-shadow: 0px 2px 6px 0px rgba(136, 136, 136, 0.28)
+}
+
+.jdb-salesVolume-improveRank-btn-box button .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 66px;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+.jdb-salesVolume-improveRank-btn-box button:hover .tooltip {
+    visibility: visible;
+}

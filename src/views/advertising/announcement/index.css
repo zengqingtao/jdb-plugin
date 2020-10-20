@@ -1,0 +1,45 @@
+.jdb-announcement-box {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.jdb-announcement-carousel-ul {
+    display: flex;
+    overflow: hidden;
+}
+
+.jdb-announcement-carousel-ul li.show-pointer {
+    cursor: pointer;
+}
+
+.jdb-announcement-carousel-ul li img {
+    display: block;
+    width: 1200px;
+}
+
+
+/* 轮播指示器 */
+
+.jdb-announcement-carousel-indicators-ul {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+}
+
+.jdb-announcement-carousel-indicators-ul li {
+    width: 38px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.jdb-announcement-carousel-indicators-ul li>div {
+    width: 30px;
+    height: 2px;
+    background-color: #fff;
+}

@@ -1,0 +1,118 @@
+/* 登录弹窗 */
+
+.jdb-login-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.39);
+    flex-direction: column;
+}
+
+.jdb-login-box {
+    width: 420px;
+    height: 409px;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 30px 26px;
+    border-radius: 4px;
+    position: relative;
+    background-image: url("../../assets/images/login-logo.png");
+    background-repeat: no-repeat;
+    background-size: 150px;
+    background-position: 270px 0;
+}
+
+.jdb-login-close {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.jdb-login-close .el-icon-close {
+    font-size: 16px;
+    color: #fff;
+}
+
+.jdb-login-box .title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #4D75FF;
+    padding-bottom: 37px;
+}
+
+.jdb-login-box input {
+    width: 100%;
+    height: 46px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 0 15px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    outline: none;
+}
+
+.jdb-login-box input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.jdb-login-box input::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #999
+}
+
+.jdb-login-btn {
+    width: 100%;
+    height: 46px;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #4D75FF;
+    outline: 0;
+    border: 0;
+    margin-top: 30px;
+}
+
+.jdb-login-btn:hover {
+    background-color: #3159e4;
+}
+
+.jdb-login-err-tip {
+    height: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: #f56c6c;
+}
+
+.jdb-resetPwd-register-btn-box {
+    position: absolute;
+    right: 30px;
+    bottom: 26px;
+}
+
+.jdb-resetPwd-register-btn-box span {
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    margin-left: 15px;
+}
+
+.jdb-resetPwd-register-btn-box span:hover {
+    color: #4D75ff;
+}
