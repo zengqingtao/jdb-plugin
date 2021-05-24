@@ -4,13 +4,15 @@ import { chapterResourcesModalFn } from "../chapterAndResourcesList/index"
 import { request } from "../../../sendMessage/index"
 const carouselHeight = 30
 const addSingleCourseAdvertisingFn = (data, advertising) => {
+    let titleWidth = getTitleWidth(data.courseName.length)
+    let targetEl = ''
     let carouselItem = getCarouselHtml(data.chapterInfoList)
     let advertisingHtml = document.createElement("div")
     advertisingHtml.className = "jdb-singleCourse-box"
     advertisingHtml.innerHTML = `
         <div class="jdb-singleCourse-title-and-carousel-box">
-            <div class="jdb-singleCourse-title" title="${data.courseName}">
-                <span>${data.courseName}</span>
+            <div class="jdb-singleCourse-title" style="width:${titleWidth}px" title="${data.courseName}">
+                ${data.courseName}
             </div>
             <div class="jdb-singleCourse-carousel" style="height:${carouselHeight}px;line-height:${carouselHeight}px">
                 <ul class="jdb-singleCourse-carousel-ul">
@@ -48,28 +50,7 @@ const addSingleCourseAdvertisingFn = (data, advertising) => {
                 JDHBTarget = '';
             JDHBParent = document.getElementsByClassName("left-survey-main")[0]
             JDHBTarget = JDHBParent.getElementsByClassName("panel")[1]
-            let reviewBtn = advertisingHtml.getElementsByClassName('jdb-singleCourse-review')[0]
-            let title = advertisingHtml.getElementsByClassName('jdb-singleCourse-title')[0]
-            if (JDHBTarget.offsetWidth < 820) {
-                reviewBtn.style.width = '120px'
-                reviewBtn.style.height = '35px'
-                reviewBtn.style.lineHeight = '35px'
-                title.style.fontSize = '33px'
-                title.style.minWidth = '300px'
-            }
             JDHBParent.insertBefore(advertisingHtml, JDHBTarget)
-            window.onresize = function() {
-                if (JDHBTarget.offsetWidth < 820) {
-                    reviewBtn.style.width = '120px'
-                    reviewBtn.style.height = '35px'
-                    reviewBtn.style.lineHeight = '35px'
-                    title.style.fontSize = '33px'
-                    title.style.minWidth = '300px'
-                } else {
-                    title.style = {}
-                    reviewBtn.style = {}
-                }
-            }
             break;
         case '京东直投':
             let JDZTParent = '',
@@ -84,9 +65,10 @@ const addSingleCourseAdvertisingFn = (data, advertising) => {
             advertisingHtml.style.margin = '0'
             JDZTTarget.style.marginTop = '105px'
             JDZTParent.insertBefore(advertisingHtml, JDZTTarget)
-            window.onresize = function() {
-                advertisingHtml.style.width = JDZTTarget.offsetWidth + 'px'
-            }
+            targetEl = JDZTTarget
+                // window.onresize = function() {
+                //     advertisingHtml.style.width = JDZTTarget.offsetWidth + 'px'
+                // }
             break;
         case '京挑客':
             let JTKRouteName = document.getElementsByClassName("jad-pro-pageHeader-breadcrumb")[0].innerText
@@ -100,6 +82,10 @@ const addSingleCourseAdvertisingFn = (data, advertising) => {
                 JTKParent.style.marginBottom = '10px'
                 rightBox.style.marginTop = '-100px'
                 advertisingHtml.style.width = JTKTarget.offsetWidth + 'px'
+                targetEl = JTKTarget
+                    // window.onresize = function() {
+                    //     advertisingHtml.style.width = JTKTarget.offsetWidth + 'px'
+                    // }
             } else if (JTKRouteName.includes('商家任务')) {
                 advertisingHtml.style.margin = '0 24px 10px'
                 JTKParent = document.getElementsByClassName("container")[0]
@@ -113,9 +99,7 @@ const addSingleCourseAdvertisingFn = (data, advertising) => {
                 return;
             }
             JTKParent.insertBefore(advertisingHtml, JTKTarget)
-            window.onresize = function() {
-                advertisingHtml.style.width = JTKTarget.offsetWidth + 'px'
-            }
+
             break;
         case '短视频':
             let DSPRouteName = document.getElementsByClassName("jad-pro-pageHeader-breadcrumb")[0].innerText
@@ -160,6 +144,7 @@ const addSingleCourseAdvertisingFn = (data, advertising) => {
                 case 'ware.shop.jd.com':
                     if (location.pathname === '/rest/shop/wareRelation/getWareByCondition') {
                         // 自营
+                        advertisingHtml.style.fontFamily = 'auto'
                         advertisingHtml.style.marginTop = '10px'
                     } else {
                         // pop
@@ -203,6 +188,7 @@ const addSingleCourseAdvertisingFn = (data, advertising) => {
             JDKFParent = document.getElementsByClassName('right-side')[0]
             JDKFTarget = JDKFParent.children[0]
             advertisingHtml.style.marginTop = '0px'
+            advertisingHtml.style.fontFamily = 'auto'
             advertisingHtml.getElementsByClassName('jdb-singleCourse-carousel-ul')[0].style.margin = '0px'
             JDKFParent.insertBefore(advertisingHtml, JDKFTarget);
             break;
@@ -221,13 +207,23 @@ const addSingleCourseAdvertisingFn = (data, advertising) => {
                 advertisingHtml.style.margin = '0 0 10px 0'
                 advertisingHtml.style.width = target.offsetWidth + 'px'
                 parent.insertBefore(advertisingHtml, target)
-                window.onresize = function() {
-                    advertisingHtml.style.width = target.offsetWidth + 'px'
-                }
+                targetEl = target
+                    // window.onresize = function() {
+                    //     advertisingHtml.style.width = target.offsetWidth + 'px'
+                    // }
                 break;
             } else {
-                retur
+                return
             }
+    }
+    window.onresize = function() {
+        // 全部广告的标题都适配屏幕尺寸变化
+        let titleBoxs = document.getElementsByClassName("jdb-singleCourse-title")
+        for (let i = 0; i < titleBoxs.length; i++) {
+            titleBoxs[i].style.width = getTitleWidth(titleBoxs[i].innerText.length) + 'px';
+        }
+        // 有些广告宽度需要屏幕尺寸变化设置等于目标元素宽度，例如京东直投、京挑客的投放概况、京东快车/购物触点
+        targetEl ? (advertisingHtml.style.width = targetEl.offsetWidth + 'px') : ''
     }
     addCarouselEvent(data.chapterInfoList)
     let reviewBtns = document.getElementsByClassName("jdb-singleCourse-review")
@@ -287,6 +283,15 @@ const addCarouselEvent = (list) => {
             run()
         }
     }
+}
+const getTitleWidth = (length) => {
+    let width = 0
+    if (window.innerWidth <= 1500) {
+        width = length < 12 ? length * 20 : 240
+    } else {
+        width = length < 12 ? length * 26 : 300
+    }
+    return width
 }
 export {
     addSingleCourseAdvertisingFn

@@ -1,3 +1,5 @@
+@import "../../common/datepicker/foundation-datepicker.min.css";
+
 /* 按钮组 */
 
 .btn-box {
@@ -14,17 +16,70 @@
     width: 35px;
 }
 
-.btn-box p {
+.btn-box>p,
+.dzgj-moreFuction-btn {
     color: #fff;
     text-align: center;
     cursor: pointer;
-    width: 50px;
+    width: 52px;
     height: 24px;
-    line-height: 25px;
-    border: 1px solid #4D75FF;
+    line-height: 24px;
+    box-sizing: border-box;
+    border: 1px solid #E1251B;
     border-radius: 2px;
-    background-color: #4D75FF;
-    margin-left: 6px;
+    background-color: #E1251B;
+    margin-left: 5px;
+}
+
+.btn-box p.pit-production,
+.dzgj-moreFuction-btn {
+    width: 57px;
+}
+
+.dzgj-moreFuction-box {
+    position: relative;
+}
+
+.dzgj-moreFuction-list {
+    position: absolute;
+    top: -383px;
+    right: -6px;
+    z-index: 10;
+    width: 90px;
+    height: 374px;
+    padding: 9.5px 0;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 0px 3px 24px 0px rgba(160, 160, 160, 0.22);
+    border-radius: 4px;
+}
+
+.dzgj-moreFuction-list>li {
+    color: #333;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dzgj-moreFuction-list>li:hover {
+    color: #fff;
+    background: #E1251B
+}
+
+.dzgj-moreFuction-list>li+li {
+    margin-top: 6px;
+}
+
+.dzgj-moreFuction-list::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    bottom: -10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
 }
 
 

@@ -1,14 +1,13 @@
 // 京准通系列总课程列表弹窗
 import "./index.css"
-import suo from "../../../assets/images/suo.png"
 import { numberConversion } from "../../../common/conversionNumber"
-import { checkLogin, request } from "../../../sendMessage/index"
+import { request } from "../../../sendMessage/index"
 const generalCoursesModalFn = (list) => {
     let generalCoursesLis = ''
     for (let i = 0; i < list.length; i++) {
         generalCoursesLis += `
             <li>
-                <div class="jdb-generalCourses-name" >${list[i].courseName}</div>
+                <div class="jdb-generalCourses-name" >${numberConversion(i+1)+'、'+list[i].courseName}</div>
                 <div class="jdb-generalCourses-review" data-coursesId=${list[i].id}>查看课程</div>
             </li>
         `

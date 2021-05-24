@@ -1,0 +1,48 @@
+.dzgj-copySkuId-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+}
+
+.dzgj-copySkuId-box {
+    width: 566px;
+    height: 310px;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    position: relative;
+}
+
+.dzgj-copySkuId-body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.dzgj-copySkuId-close {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: -40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.dzgj-copySkuId-close .el-icon-close {
+    font-size: 14px;
+    color: #fff;
+}

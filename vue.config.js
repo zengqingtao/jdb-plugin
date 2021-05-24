@@ -15,14 +15,19 @@ chromeName.forEach(name => {
 });
 
 // 生成manifest文件
-const manifest =
-    process.env.NODE_ENV === "production" ? {
-        from: path.resolve("src/manifest.production.json"),
-        to: `${path.resolve("dist")}/manifest.json`
-    } : {
-        from: path.resolve("src/manifest.development.json"),
-        to: `${path.resolve("dist")}/manifest.json`
-    };
+const manifest = {
+    from: path.resolve("src/manifest.json"),
+    to: `${path.resolve("dist")}/manifest.json`
+};
+//旧版的manifest.json分开发环境和正式环境的，因为内容是一样的，后来觉得没必要了，就不分了
+// const manifest =
+//     process.env.NODE_ENV === "production" ? {
+//         from: path.resolve("src/manifest.production.json"),
+//         to: `${path.resolve("dist")}/manifest.json`
+//     } : {
+//         from: path.resolve("src/manifest.development.json"),
+//         to: `${path.resolve("dist")}/manifest.json`
+//     };
 
 const plugins = [
     CopyWebpackPlugin([manifest]),
@@ -66,7 +71,7 @@ const config = {
         entry: {
             goodsList: "./src/matches/goodsList/index.js",
             goodsDetails: "./src/matches/goodsDetails/index.js",
-            searchScholar: "./src/matches/searchScholar/index.js"
+            searchScholar: "./src/matches/searchScholar/index.js",
         },
         output: {
             filename: "js/[name].js"

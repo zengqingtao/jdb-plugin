@@ -3,10 +3,11 @@
 import axios from 'axios';
 const CryptoJS = require('crypto-js');
 import { Encrypt } from "./secret";
+import manifest from "../manifest.json"
 
 const SecurityKey = CryptoJS.MD5(Math.round(new Date() / 1000).toString().slice(1)).toString();
 export const ajaxGet = (url = "", params = {}, token = '') => {
-    token = localStorage.getItem('token') ? localStorage.getItem('token') : ''
+    token = localStorage.getItem('token') ? localStorage.getItem('token') : token
     return axios({
         method: "GET",
         url,
@@ -17,6 +18,8 @@ export const ajaxGet = (url = "", params = {}, token = '') => {
             "os-type": 1,
             SecurityKey,
             SecurityCode: Encrypt(SecurityKey),
+            source: 'dz_plugin',
+            version: manifest.version
         },
     });
 };
@@ -33,6 +36,8 @@ export const ajaxPost = (url, params, token = '') => {
             "os-type": 1,
             SecurityKey,
             SecurityCode: Encrypt(SecurityKey),
+            source: 'dz_plugin',
+            version: manifest.version
         },
     });
 };

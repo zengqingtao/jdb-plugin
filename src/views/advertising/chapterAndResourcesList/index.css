@@ -15,8 +15,9 @@
 }
 
 .jdb-chapterResources-box {
-    width: 800px;
-    height: 310px;
+    width: 1000px;
+    min-height: 200px;
+    max-height: 435px;
     color: #333;
     background-color: #fff;
     position: relative;
@@ -110,13 +111,19 @@
     overflow: hidden;
 }
 
+.jdb-chapterResources-chapter-button-group {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 30px;
+}
+
 .jdb-chapterResources-chapter-button-group button {
     width: 110px;
     height: 30px;
-    color: #4d75ff;
+    color: #E1251B;
     font-size: 14px;
     outline: none;
-    border: 1px solid #4d75ff;
+    border: 1px solid #E1251B;
     border-radius: 4px;
     background-color: #fff;
     margin-top: 10px;
@@ -126,7 +133,7 @@
 
 .jdb-chapterResources-chapter-button-group button:hover {
     color: #fff;
-    background-color: #4d75ff;
+    background-color: #E1251B;
 }
 
 .jdb-chapterResources-chapter-button-group button:last-child {
@@ -140,7 +147,6 @@
 .jdb-chapterResources-resources-ul {
     width: 100%;
     height: 100%;
-    display: flex;
     flex-wrap: wrap;
     overflow-y: auto;
     box-sizing: border-box;
@@ -151,24 +157,19 @@
 .jdb-chapterResources-resources-empty-li {
     width: 100% !important;
     height: 100% !important;
-    line-height: 20px;
     margin: 0 !important;
     font-size: 14px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-top: 25px;
 }
 
 .jdb-chapterResources-resources-empty-li img {
-    width: 35px;
-    height: 35px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 8px
-}
-
-.jdb-chapterResources-resources-empty-li .empty {
-    padding-top: 30px;
 }
 
 .jdb-chapterResources-resources-ul li:not(.jdb-chapterResources-resources-empty-li) {
@@ -195,7 +196,7 @@
 }
 
 .jdb-chapterResources-resources-sourceName {
-    width: 110px;
+    width: 180px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
@@ -203,7 +204,7 @@
 }
 
 .jdb-chapterResources-resources-description {
-    width: 205px;
+    width: 300px;
     color: #999;
     font-size: 12px;
     display: -webkit-box;

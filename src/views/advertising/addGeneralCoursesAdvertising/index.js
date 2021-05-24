@@ -26,6 +26,7 @@ const addAdvertisingFn = (data) => {
     let parentElement = document.getElementsByClassName("account-container")[0]
     let targetElement = document.getElementsByClassName("profile-container")[0]
     parentElement.insertBefore(advertisingHtml, targetElement)
+    document.getElementsByClassName('account-container')[0].style.height = 'auto'
     addCarouselEvent(data)
     document.getElementsByClassName("jdb-advertising-review")[0].addEventListener('click', () => {
         generalCoursesModalFn(data)

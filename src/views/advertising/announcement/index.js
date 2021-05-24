@@ -1,5 +1,4 @@
 // 京东商智首页广告
-import { _ } from "core-js"
 import "./index.css"
 const announcement = (list) => {
     let lis = getLis(list)

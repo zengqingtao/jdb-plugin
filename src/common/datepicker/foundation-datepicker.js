@@ -1326,6 +1326,12 @@ function customDatepicker($) {
         '</table>' +
         '</div>' +
         '<div class="datepicker-days">' +
+        `<div class="shortcut-box">
+            <div type="3">近3天</div>
+            <div type="7">近7天</div>
+            <div type="15">近15天</div>
+            <div type="30">近30天</div>
+        </div>` +
         '<table class=" table-condensed">' +
         DPGlobal.headTemplate +
         '<tbody></tbody>' +

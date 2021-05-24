@@ -35,7 +35,7 @@
     height: 60px;
     line-height: 60px;
     display: flex;
-    font-size: 44px;
+    font-size: 38px;
     font-weight: bold;
     padding-right: 29px;
 }
@@ -54,7 +54,7 @@
 
 .jdb-advertising-carousel-ul {
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .jdb-advertising-carousel-ul li {

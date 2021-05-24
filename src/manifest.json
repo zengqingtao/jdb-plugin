@@ -1,0 +1,86 @@
+{
+    "manifest_version": 2,
+    "name": "店长管家",
+    "description": "服务于京东商家，运用数据分析提供运营决策的工具，大幅度帮助商家提升运营效率",
+    "version": "3.12.2",
+    "options_page": "options.html",
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "16": "./assets/images/icon16.png",
+        "48": "./assets/images/icon48.png",
+        "128": "./assets/images/icon128.png"
+    },
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "content_scripts": [{
+            "matches": [
+                "*://search.jd.com/*"
+            ],
+            "css": [
+                "css/goodsList.css"
+            ],
+            "js": [
+                "js/goodsList.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "*://item.jd.com/*",
+                "*://*.jd.hk/*",
+                "*://item.yiyaojd.com/*"
+            ],
+            "css": [
+                "css/goodsDetails.css"
+            ],
+            "js": [
+                "js/goodsDetails.js"
+            ],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "*://sz.jd.com/sz/view/*",
+                "*://jzt.jd.com/home/*",
+                "*://jzt.jd.com/jdkc/survey.html*",
+                "*://jzt.jd.com/haitou/*",
+                "*://zt.jd.com/fcgi-bin/jdzt/user/main",
+                "*://jzt.jd.com/touch_point/index.html*",
+                "*://jzt.jd.com/jtk/*",
+                "*://mc.jd.com/shop/index.html*",
+                "*://jshopx.jd.com/pageManage*",
+                "*://ware.shop.jd.com/rest/ware/list/manage*",
+                "*://ware.shop.jd.com/rest/shop/wareRelation/getWareByCondition",
+                "*://yj.shop.jd.com/vane/v2/init",
+                "*://crm.shop.jd.com/crm/shopNewLevel/index.action*",
+                "*://crm.shop.jd.com/crm/menu/proxy/menuProxy.action*",
+                "*://jlive.jd.com/index",
+                "*://kf.jd.com/",
+                "*://shop.jd.com/",
+                "*://shop.jd.com/index.action"
+            ],
+            "css": [
+                "css/searchScholar.css"
+            ],
+            "js": [
+                "js/searchScholar.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "cookies",
+        "http://*/*",
+        "https://*/*",
+        "management"
+    ],
+    "web_accessible_resources": [
+        "fonts/*"
+    ]
+}

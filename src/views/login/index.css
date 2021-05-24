@@ -27,8 +27,8 @@
     position: relative;
     background-image: url("../../assets/images/login-logo.png");
     background-repeat: no-repeat;
-    background-size: 150px;
-    background-position: 270px 0;
+    background-size: 109.4px 90px;
+    background-position: 311px 0;
 }
 
 .jdb-login-close {
@@ -53,7 +53,7 @@
 .jdb-login-box .title {
     font-size: 26px;
     font-weight: bold;
-    color: #4D75FF;
+    color: #333;
     padding-bottom: 37px;
 }
 
@@ -83,21 +83,21 @@
     border-radius: 4px;
     font-size: 18px;
     color: #fff;
-    background-color: #4D75FF;
+    background-color: #E1251B;
     outline: 0;
     border: 0;
     margin-top: 30px;
 }
 
 .jdb-login-btn:hover {
-    background-color: #3159e4;
+    background-color: #ec1f15;
 }
 
 .jdb-login-err-tip {
     height: 18px;
     text-align: center;
     font-size: 14px;
-    color: #f56c6c;
+    color: #E1251B;
 }
 
 .jdb-resetPwd-register-btn-box {
@@ -114,5 +114,26 @@
 }
 
 .jdb-resetPwd-register-btn-box span:hover {
-    color: #4D75ff;
+    color: #E1251B;
+}
+
+.jdb-checkbox {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.jdb-checkbox-label {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.jdb-checkbox-img {
+    width: 16px;
+    height: 16px;
+}
+
+.jdb-checkbox-label span {
+    margin-left: 3px;
 }

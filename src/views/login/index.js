@@ -1,6 +1,9 @@
 // 登录弹窗
 import { message } from 'element-ui'
+import jdbLogo from '../../assets/images/jdb.png'
 import "./index.css"
+import config from "../../config/index"
+
 const validteAccountPassword = () => {
     let phone = document.getElementById("jdb-login-phone").value
     let password = document.getElementById("jdb-login-password").value
@@ -31,11 +34,17 @@ const loginModalFn = () => {
             <div class="jdb-login-close">
                 <i class="el-icon-close"></i>
             </div>
-            <div class="title">账号登录</div>
+            <div class="title">店长管家账号登录</div>
             <div class="jdb-login-err-tip"></div>
             <input placeholder="请输入手机号"  id="jdb-login-phone" />
             <input placeholder="请输入密码" type="password" id="jdb-login-password">
             <button class="jdb-login-btn">登 录</button>
+            <div class="jdb-checkbox">
+                <div class="jdb-checkbox-label">
+                    <img class="jdb-checkbox-img" src='${jdbLogo}'></img>
+                    <span>京店宝账号登录</span>
+                </div>
+            </div>
             <div class="jdb-resetPwd-register-btn-box">
                 <span>找回密码</span>
                 <span>免费注册</span>
@@ -56,22 +65,30 @@ const loginModalFn = () => {
             validteAccountPassword()
         }
     })
-    let urls = [
-        "https://www.jingdianbao.cn/#/resetpwd",
-        "https://www.jingdianbao.cn/#/register"
-    ]
+    let path = ["resetpwd", "register"]
     for (let i = 0; i < registerBtns.length; i++) {
         registerBtns[i].addEventListener("click", () => {
-            window.open(urls[i])
+            window.open(config.dzgjUrl + path[i])
         })
     }
     closeIcon.addEventListener("click", () => {
         document.body.removeChild(loginModal)
     })
+    let checkbox = document.getElementsByClassName('jdb-checkbox-label')[0]
+    let checkboxLabel = checkbox.getElementsByTagName('span')[0]
+    let loginTitle = document.getElementsByClassName('jdb-login-box')[0].getElementsByClassName('title')[0]
+    checkbox.addEventListener('click', () => {
+        loginTitle.innerText = checkboxLabel.innerText
+        if (checkboxLabel.innerText === '京店宝账号登录') {
+            checkboxLabel.innerText = '店长管家账号登录'
+        } else {
+            checkboxLabel.innerText = '京店宝账号登录'
+        }
+    })
 };
 const login = (phone, password) => {
     chrome.runtime.sendMessage({
-            postData: { phone, password, type: '0' }
+            postData: { phone, password, type: 'login' }
         },
         function(res) {
             if (res.code === 200) {

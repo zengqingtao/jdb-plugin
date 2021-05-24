@@ -4,6 +4,7 @@ import { message } from "element-ui"
 import { request } from "../../sendMessage/index"
 import { insertElementIcons } from "../../common/insertElementIcons"
 import { setCookie, getCookie } from "../../common/cookie"
+import { addMemberUpgradeBtnFn, addStoreDiagnosisBtnFn } from "../../views/advertising/memberUpgrade"
 insertElementIcons()
 console.log("init")
 const judgeUrl = () => {
@@ -43,7 +44,7 @@ const judgeUrl = () => {
     } else if (location.href.includes('//jzt.jd.com/touch_point/index.html#/survey')) {
         // 购物触点
         params = { type: 8, courseId: 7, advertising: '购物触点' }
-    } else if (location.href.includes('//jzt.jd.com/jtk/#/index')) {
+    } else if (location.href.split(":")[1] === '//jzt.jd.com/jtk/#/' || location.href.includes('//jzt.jd.com/jtk/#/index')) {
         // 京挑客-投放概况
         params = { type: 8, courseId: 8, advertising: '京挑客' }
     } else if (location.href.includes('//jzt.jd.com/jtk/#/task-list')) {
@@ -110,21 +111,22 @@ const judgeUrl = () => {
             }
         }
     } else if (location.href.includes("//shop.jd.com")) {
+        addMemberUpgradeBtnFn()
+        addStoreDiagnosisBtnFn()
         if (getNowDate() !== getCookie('showNoticeDate')) {
-            params = { type: 13 }
+            request({ type: 13 }) //京东商智首页
             setCookie('showNoticeDate', getNowDate(), 1);
         } else {
-            return
+            request({ type: 17 })
         }
+        params = { type: 15 }
     } else {
         return;
     }
     request(params)
 };
 
-// window.onload = function() {
-//     console.log("window.onload")
-// }
+
 $(document).ready(function() {
     console.log("jquery-ready")
     judgeUrl()
@@ -139,23 +141,9 @@ window.addEventListener('hashchange', (e) => {
     judgeUrl()
 }, false);
 const getNowDate = () => {
-        const date = new Date();
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        return `${year}-${month}-${day}`;
-    }
-    // let _wr = function(type) {
-    //     var orig = history[type];
-    //     return function() {
-    //         var rv = orig.apply(this, arguments);
-    //         var e = new Event(type);
-    //         e.arguments = arguments;
-    //         window.dispatchEvent(e);
-    //         return rv;
-    //     };
-    // };
-    // history.pushState = _wr('pushState');
-    // window.addEventListener('pushState', function(e) {
-    //     console.log("4234561111")
-    // });
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${year}-${month}-${day}`;
+}

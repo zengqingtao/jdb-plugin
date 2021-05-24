@@ -1,94 +1,114 @@
 // 检查登录与发送消息
 import { message } from "element-ui"
 import { loginModalFn } from "../views/login/index"
-import { activeAccountModalFn } from "../views/activeAccount/index"
-import { salesVolumeHeadFn, salesVolumeBodyFn } from "../views/querySalesVolume/index"
-import { weightOptionsFn, weightDataFn } from "../views/queryWeight/index"
-import { flowInitFn, flowDataFn } from "../views/queryFlow/index"
-import { chooseDateModalFn, commentTableFn } from "../views/queryComment/index"
-import { commissionHeadFn, commissionBodyFn } from "../views/queryCps/commission/index"
-import { couponHeadFn, couponBodyFn } from "../views/queryCps/coupon/index"
 import { addAdvertisingFn } from "../views/advertising/addGeneralCoursesAdvertising/index"
 import { chapterResourcesModalFn } from "../views/advertising/chapterAndResourcesList/index"
 import { addSingleCourseAdvertisingFn } from "../views/advertising/addSingleCourseAdvertising/index"
 import { evaluationModalFn, feedbackModalFn } from "../views/advertising/feedback"
 import { announcement } from "../views/advertising/announcement/index"
-import { addTopTimedAdvertisingFn } from "../views/advertising/addTopTimedAdvertising/index"
+import { addTopTimedAdvertisingFn, addTopNoticeFn } from "../views/advertising/addTopTimedAdvertising/index"
+import { addCourseRegisterAdFn } from "../views/advertising/addCourseRegisterAdvertising"
+import { downloadImageFn } from "../views/downloadImage/index"
+import { iframeCommonModal } from "../views/modal/commonModal/index"
+import { dzAdviserModal } from "../views/modal/dzAdviserModal/index"
+import { copySkuIdModal } from "../views/modal/copySkuIdModal"
+
 // 检查是否登录
 const checkLogin = (type, skuId = '', courseName = '', courseId = '') => {
     chrome.runtime.sendMessage({ postData: { type: '-1' } },
         function(res) {
-            let { token, isActive } = res
+            let { token, isActive, account } = res
             if (!token) { //未登录
                 loginModalFn()
             } else {
-                let array = [10, 11]
+                let array = ['10', '11']
                 if (array.includes(type)) { //不需要激活的功能
                     switch (type) {
-                        case 10:
+                        case '10':
                             feedbackModalFn(courseId)
                             break;
-                        case 11:
+                        case '11':
                             evaluationModalFn(courseName, courseId)
                             break;
                     }
                 } else {
-                    if (isActive === 'false') return activeAccountModalFn()
-                    switch (type) {
-                        case 1:
-                            salesVolumeHeadFn(skuId)
-                            break;
-                        case 2:
-                            weightOptionsFn(skuId)
-                            break;
-                        case 4:
-                            chooseDateModalFn(skuId)
-                            break;
-                        default:
-                            request({ skuId, type })
+                    if (isActive.code === 2003) {
+                        loginModalFn()
+                    } else if (isActive.code === 200) {
+                        // isActive.data为true,可使用功能，为false弹出激活弹窗
+                        if (isActive.data) {
+                            switch (type) {
+                                case 'copySkuId':
+                                    copySkuIdModal({ skuId, path: 'copySkuId' })
+                                    break;
+                                case 'queryRanking':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryRanking' })
+                                    break;
+                                case 'querySalesVolume':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/salesVolume' })
+                                    break;
+                                case 'queryOrder':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryOrder' })
+                                    break;
+                                case 'queryWeight':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryWeight' })
+                                    break;
+                                case 'queryFlow':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryFlow' })
+                                    break;
+                                case 'queryComment':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryComment' })
+                                    break;
+                                case 'queryPortrait':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryPortrait' })
+                                    break;
+                                case 'queryCps':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryCps' })
+                                    break;
+                                case 'commentAnalysis':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/commentAnalysis' })
+                                    break;
+                                case 'downloadComment':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/downloadComment' })
+                                    break;
+
+                                case '20':
+                                    downloadImageFn(skuId)
+                                    break;
+                                case 'pitProductionCalc':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/pitProductionCalc' })
+                                    break;
+                                case 'queryExpress':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/queryExpress' })
+                                    break;
+                                case 'secondKillAnalysis':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/secondKillAnalysis' })
+                                    break;
+                                case 'searchAnalysis':
+                                    iframeCommonModal({ skuId, path: 'dataQuery/searchAnalysis' })
+                                    break;
+                                default:
+                                    request({ skuId, type })
+                            }
+                        } else {
+                            dzAdviserModal({ path: 'dzAdviser' })
+                        }
+                    } else {
+                        message.error(isActive.msg)
                     }
                 }
             }
         })
 };
-// 激活京店宝账号
-const activeAccount = (activeCode) => {
-    chrome.runtime.sendMessage({
-            postData: { activeCode, type: '-2' }
-        },
-        function(res) {
-            if (res.code === 200) {
-                document.body.removeChild(document.getElementsByClassName("jdb-active-account-modal")[0])
-                message.success("激活成功")
-            } else {
-                message.error(res.msg)
-            }
-        }
-    )
-};
+
 // 向background发送参数，让background向服务器发送请求，background拿到数据后传递回来
 const request = (params) => {
     let type = params.type
-    switch (type) {
-        case 3:
-            flowInitFn()
-            break;
-        case 5:
-            commissionHeadFn()
-            break;
-        case 6:
-            couponHeadFn()
-            break;
-
-    }
     chrome.runtime.sendMessage({
             postData: {
                 skuId: params.skuId || '',
                 type: params.type,
-                keyWord: params.keyWord || '',
                 url: params.url || '',
-                dateArr: params.dateArr || '', //查留评率-日期
-                dimension: params.dimension || '', //统计维度
                 courseId: params.courseId || '', //课程编号
                 shopLevel: params.shopLevel || '', //京东商智-店铺级别
                 courseName: params.courseName || '', //搜索书生广告的课程名称
@@ -98,54 +118,7 @@ const request = (params) => {
             }
         },
         function(res) {
-            switch (type) {
-                case 1:
-                    $(".jdb-salesVolume-search-button").removeClass("loading")
-                    break;
-                case 2:
-                    $(".jdb-weight-search-btn").removeClass("jdb-weight-search-btn-loading")
-                    break;
-                case 4:
-                    $(".jdb-comment-search-btn").removeClass("jdb-comment-search-btn-loading")
-                    break;
-            }
             let actions = {
-                "200_1": () => {
-                    salesVolumeBodyFn(res.data.data)
-                },
-                "200_2": () => {
-                    weightDataFn(res.data.data)
-                },
-                "200_3": () => {
-                    let dataList = Object.keys(res.data.data).map(
-                        key => res.data.data[key]
-                    )
-                    dataList.length = dataList.length - 1
-                    let currentData = res.data.data.last7Result.visitor ?
-                        res.data.data.last7Result :
-                        res.data.data.last15Result.visitor ?
-                        res.data.data.last15Result :
-                        res.data.data.last30Result
-                    let days = res.data.data.last7Result.visitor ?
-                        0 :
-                        res.data.data.last15Result.visitor ?
-                        1 :
-                        2
-                    if (dataList.every(item => item.visitor == null)) {
-                        $(".jdb-flow-loading-box").text("暂无数据")
-                    } else {
-                        flowDataFn(currentData, days, res.data.data.description, dataList)
-                    }
-                },
-                '200_4': () => {
-                    commentTableFn(res.data.data.searchObj, res.data.data.comentDatas)
-                },
-                "200_5": () => {
-                    res.data.data.spu.commissionList.length ? commissionBodyFn(res.data.data.spu.commissionList[0]) : $(".jdb-cps-commission-loading-td").text("暂无数据")
-                },
-                "200_6": () => {
-                    couponBodyFn(res.data.data)
-                },
                 "200_7": () => {
                     res.data.data.length !== 0 ? addAdvertisingFn(res.data.data) : ''
                 },
@@ -170,28 +143,20 @@ const request = (params) => {
                 },
                 "200_13": () => {
                     res.data.data.length !== 0 ? addTopTimedAdvertisingFn(res.data.data[0]) : ''
+                    request({ type: 17 })
+                },
+                "200_15": () => {
+                    res.data.data.length !== 0 ? addCourseRegisterAdFn(res.data.data) : ''
+                },
+                "200_17": () => {
+                    res.data.data.length !== 0 ? addTopNoticeFn(res.data.data) : ''
                 },
                 "2003": () => {
                     request({ type: '-3' })
                     loginModalFn()
                 },
                 default: () => {
-                    switch (type) {
-                        case 0:
-                            addBtnFn()
-                            break;
-                        case 3:
-                            $(".jdb-flow-loading-box").text(res.data.msg)
-                            break;
-                        case 5:
-                            $(".jdb-cps-commission-loading-td").text(res.data.msg)
-                            break;
-                        case 6:
-                            $(".jdb-cps-coupon-loading-td").text(res.data.msg)
-                            break;
-                        default:
-                            message.error(res.data.msg)
-                    }
+                    message.error(res.data.msg)
                 }
             }
             let action = ''
@@ -206,6 +171,5 @@ const request = (params) => {
 }
 export {
     checkLogin,
-    activeAccount,
     request
 }

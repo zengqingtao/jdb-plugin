@@ -15,6 +15,10 @@ or
 npm run build-watch
 ```
 
+### 测试环境打包
+```
+npm run test
+```
 ### 生产环境打包
 ```
 npm run build

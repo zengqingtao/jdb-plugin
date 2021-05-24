@@ -1,8 +1,6 @@
 import { ajaxGet, ajaxPost } from '../ajax'
-let baseUrl =
-    process.env.NODE_ENV === 'production' ?
-    'https://api.jingdianbao.cn/' :
-    'https://local.yushutec.com:18443/jdb_api/'
+import config from "../../config/index"
+let baseUrl = config.serveUrl
 
 /**
  * 京东商智-保存店铺级别
@@ -49,4 +47,16 @@ export const curriculumEvaluation = (params = {}) => {
  */
 export const showNotice = (params = {}) => {
     return ajaxGet(baseUrl + 'yushu-operation/notice/showNotice', params);
+};
+/**
+ * 获取运营经理二维码
+ */
+export const getQRCode = (params = {}) => {
+    return ajaxGet(baseUrl + 'yushu-operation/qrCode/getQRCode', params);
+};
+/**
+ * 获取通知公告内容
+ */
+export const getNoticeList = (params = {}) => {
+    return ajaxGet(baseUrl + 'yushu-operation/announcement/getNowProductNotice', params);
 };

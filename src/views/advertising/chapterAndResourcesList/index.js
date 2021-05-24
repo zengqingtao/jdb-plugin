@@ -4,9 +4,9 @@ import { numberConversion } from "../../../common/conversionNumber"
 import suo from "../../../assets/images/suo.png"
 import { checkLogin } from "../../../sendMessage"
 const chapterResourcesModalFn = (list) => {
-    console.log("list：", list)
+    if (document.getElementsByClassName('jdb-chapterResources-modal')[0]) return
     let singleCourseChapterLis = getSingleCourseChapterLis(list.chapterInfoList)
-    let singleCourseResourcesLis = getSingleCourseResourcesLis(list.sourceInfoList, list.isSaWhiteList)
+    let singleCourseResourcesLis = getSingleCourseResourcesLis(list.sourceInfoList, list.isSaWhiteList, list.codeUrl)
     let chapterResourcesModal = document.createElement("div")
     chapterResourcesModal.className = "jdb-chapterResources-modal"
     chapterResourcesModal.innerHTML = `
@@ -40,10 +40,10 @@ const chapterResourcesModalFn = (list) => {
     })
     let btns = document.getElementsByClassName("jdb-chapterResources-chapter-button-group")[0].children
     btns[0].addEventListener('click', () => {
-        checkLogin(10, '', '', list.id)
+        checkLogin('10', '', '', list.id)
     })
     btns[1].addEventListener('click', () => {
-        checkLogin(11, '', list.courseName, list.id)
+        checkLogin('11', '', list.courseName, list.id)
     })
     let btnBoxs = document.getElementsByClassName("jdb-chapterResources-resources-right")
     for (let i = 0; i < btnBoxs.length; i++) {
@@ -64,8 +64,7 @@ const getSingleCourseChapterLis = (list) => {
     }
     return lis
 };
-const getSingleCourseResourcesLis = (list, isSaWhiteList) => {
-    console.log(isSaWhiteList)
+const getSingleCourseResourcesLis = (list, isSaWhiteList, codeUrl) => {
     let lis = ''
     if (list.length === 0) {
         if (isSaWhiteList) {
@@ -77,9 +76,10 @@ const getSingleCourseResourcesLis = (list, isSaWhiteList) => {
         } else {
             lis = `
                 <li class="jdb-chapterResources-resources-empty-li">
-                    <img src="${suo}" />
-                    <div>尚未开通权限</div>
-                    <div>请联系京店宝客服人员</div>
+                    <img src="${codeUrl[0].img}" />
+                    <div style="padding-bottom:10px">店长顾问</div>
+                    <div>尚未开通资源包权限</div>
+                    <div>请联系店长管家店长顾问</div>
                 </li>
             `
         }
@@ -126,7 +126,7 @@ const resourcesDetailsModalFn = (obj) => {
                         <div class="tips">点击图片，可放大查看</div>
                     </div>
                 </div>
-                <div class="jdb-resourcesDetails-item">
+                <div class="jdb-resourcesDetails-item" style="${obj.caseImgs.length===0?'display:none':''}">
                     <div class="label">案例：</div>
                     <div>
                         <div class="jdb-examples-imgList">
